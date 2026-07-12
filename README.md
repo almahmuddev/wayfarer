@@ -9,29 +9,6 @@ A full-stack outdoor adventure & experience booking platform, built with Next.js
 - **Auth:** NextAuth.js — Credentials (bcrypt) + optional Google OAuth, JWT sessions
 - **Validation:** Zod + React Hook Form
 
-## Getting Started
-
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Copy the environment template and fill in your own values:
-   ```bash
-   cp .env.example .env.local
-   ```
-
-   - `MONGODB_URI` — your MongoDB connection string (Atlas or local)
-   - `NEXTAUTH_SECRET` — generate one with `openssl rand -base64 32`
-   - `NEXTAUTH_URL` — `http://localhost:3000` for local dev
-   - `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` — optional, only needed if you want Google login
-
-3. Run the dev server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) — you should see the scaffold confirmation page.
 
 ## Project Structure
 
@@ -57,7 +34,7 @@ src/
 ## Build Roadmap (step by step)
 
 - [x] **Step 1 — Scaffold:** project setup, DB connection, auth config, design tokens, base UI components
-- [ ] **Step 2 — Landing page:** navbar, hero, 7+ sections, footer
+- [x] **Step 2 — Landing page:** navbar, hero, 8 sections, footer
 - [ ] **Step 3 — Auth pages:** `/login`, `/register` with validation + demo login
 - [ ] **Step 4 — Explore page:** `/experiences` — search, filters, sorting, pagination, skeleton loaders
 - [ ] **Step 5 — Details page:** `/experiences/[slug]` — gallery, overview, specs, reviews, related items
