@@ -71,3 +71,16 @@ export interface ReviewItem {
   comment: string;
   createdAt: string;
 }
+
+export interface ManageExperienceItem {
+  id: string;
+  slug: string;
+  title: string;
+  image: string;
+  price: number;
+  currency: string;
+  category: string;
+  isPublished: boolean;
+  createdAt: string;
+  hostName?: string; // only populated for admin view
+}

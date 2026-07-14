@@ -36,9 +36,9 @@ src/
 - [x] **Step 2 — Landing page:** navbar, hero, 8 sections, footer
 - [x] **Step 3 — Auth pages:** `/login`, `/register` with validation + demo login
 - [x] **Step 4 — Explore page:** `/experiences` — search, filters, sorting, pagination, skeleton loaders
-- [ ] **Step 5 — Details page:** `/experiences/[slug]` — gallery, overview, specs, reviews, related items
-- [ ] **Step 6 — Add Item (protected):** `/items/add`
-- [ ] **Step 7 — Manage Items (protected):** `/items/manage`
+- [x] **Step 5 — Details page:** `/experiences/[slug]` — gallery, overview, specs, reviews, related items
+- [x] **Step 6 — Add Item (protected):** `/items/add`
+- [x] **Step 7 — Manage Items (protected):** `/items/manage`
 - [ ] **Step 8 — Additional pages:** About, Contact, and 1–2 more
 - [ ] **Step 9 — Polish pass:** responsiveness, accessibility, empty/error states
 - [ ] **Step 10 — Deployment:** Vercel + MongoDB Atlas, seed demo/admin accounts
