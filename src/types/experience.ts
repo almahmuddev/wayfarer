@@ -40,3 +40,34 @@ export const DEFAULT_FILTERS: ExperienceFiltersState = {
   difficulty: "All",
   sort: "recommended",
 };
+
+export interface ExperienceDetail {
+  id: string;
+  slug: string;
+  title: string;
+  shortDescription: string;
+  fullDescription: string;
+  images: string[];
+  price: number;
+  currency: string;
+  durationLabel: string;
+  difficulty: string;
+  category: string;
+  location: string;
+  maxGroupSize: number;
+  startDates: string[];
+  highlights: string[];
+  included: string[];
+  ratingAverage: number;
+  ratingCount: number;
+  host: { name: string; image?: string };
+}
+
+export interface ReviewItem {
+  id: string;
+  authorName: string;
+  authorLocation?: string;
+  rating: number;
+  comment: string;
+  createdAt: string;
+}

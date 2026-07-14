@@ -9,6 +9,7 @@ import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
 import { User } from "../src/models/User";
 import { Experience } from "../src/models/Experience";
+import { Review } from "../src/models/Review";
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -181,15 +182,141 @@ async function seedExperiences(hostId: mongoose.Types.ObjectId) {
     },
   ];
 
+  const experienceIdBySlug = new Map<string, mongoose.Types.ObjectId>();
+
   for (const exp of experiences) {
-    await Experience.findOneAndUpdate(
+    const doc = await Experience.findOneAndUpdate(
       { slug: exp.slug },
       { ...exp, host: hostId, isPublished: true },
       { upsert: true, new: true, setDefaultsOnInsert: true }
     );
+    experienceIdBySlug.set(exp.slug, doc._id);
   }
 
   console.log(`Seeded ${experiences.length} experiences.`);
+  return experienceIdBySlug;
+}
+
+const reviewsBySlug: Record<
+  string,
+  { authorName: string; authorLocation: string; rating: number; comment: string }[]
+> = {
+  "sunrise-trek-bandarban-hill-tracks": [
+    {
+      authorName: "James Carter",
+      authorLocation: "London, UK",
+      rating: 5,
+      comment:
+        "Our host met us at the bus stop and the whole trip felt properly local, not staged. The ridge-top sunrise was worth every step of the climb.",
+    },
+    {
+      authorName: "Tanvir Ahmed",
+      authorLocation: "Dhaka",
+      rating: 4,
+      comment:
+        "Good pace for a moderate trek, though the second day started earlier than I expected. Camping with the host's family was the highlight.",
+    },
+  ],
+  "sundarbans-mangrove-kayaking": [
+    {
+      authorName: "Nusrat Jahan",
+      authorLocation: "Dhaka",
+      rating: 5,
+      comment:
+        "Our guide knew exactly which channels the deer come down to at low tide. Nothing like the tour-bus version of this trip.",
+    },
+    {
+      authorName: "Priya Nair",
+      authorLocation: "Kolkata, India",
+      rating: 5,
+      comment:
+        "Went in expecting a boat tour and got an actual paddling trip through channels too narrow for motor boats. Saw a crocodile from about 20 meters away.",
+    },
+  ],
+  "sylhet-tea-garden-cultural-walk": [
+    {
+      authorName: "Farhana Akter",
+      authorLocation: "Sylhet",
+      rating: 5,
+      comment:
+        "Did this as a half-day trip before a flight and it was more than enough time. The tasting session with the smallholder family was genuinely educational, not just a photo stop.",
+    },
+    {
+      authorName: "Michael Chen",
+      authorLocation: "Singapore",
+      rating: 4,
+      comment:
+        "Easy walk, good for a group with mixed fitness levels. Would have liked a bit more time at the tasting.",
+    },
+  ],
+  "lawachara-rainforest-wildlife-safari": [
+    {
+      authorName: "Sarah Whitfield",
+      authorLocation: "Manchester, UK",
+      rating: 4,
+      comment:
+        "We got lucky and heard the gibbons calling early on, though didn't spot them until later. Our naturalist guide was excellent at identifying bird calls.",
+    },
+    {
+      authorName: "Rafiq Islam",
+      authorLocation: "Chattogram",
+      rating: 5,
+      comment:
+        "Went twice now. Morning departure really does make the difference for wildlife activity.",
+    },
+  ],
+  "saint-martins-island-camping": [
+    {
+      authorName: "Elena Petrova",
+      authorLocation: "Sofia, Bulgaria",
+      rating: 5,
+      comment:
+        "Three nights was the right amount of time to actually relax instead of rushing between spots. The reef boat trip at low tide was a highlight.",
+    },
+    {
+      authorName: "Imran Kabir",
+      authorLocation: "Sylhet",
+      rating: 5,
+      comment:
+        "Camping right on the coastline instead of a hotel changed the whole trip. Bonfire nights were exactly what I needed.",
+    },
+  ],
+  "ratargul-swamp-forest-photography-trail": [
+    {
+      authorName: "David Okafor",
+      authorLocation: "Lagos, Nigeria",
+      rating: 5,
+      comment:
+        "The sunrise departure is non-negotiable if you want the mirror-water shots - our guide timed it perfectly and knew the compositions that actually work.",
+    },
+    {
+      authorName: "Farhana Akter",
+      authorLocation: "Sylhet",
+      rating: 4,
+      comment:
+        "Small boat, small group, and nobody rushing you for the light. Water was a bit choppier than expected by the time we left.",
+    },
+  ],
+};
+
+async function seedReviews(experienceIdBySlug: Map<string, mongoose.Types.ObjectId>) {
+  let count = 0;
+
+  for (const [slug, reviews] of Object.entries(reviewsBySlug)) {
+    const experienceId = experienceIdBySlug.get(slug);
+    if (!experienceId) continue;
+
+    // Avoid duplicating reviews if the seed script is run more than once
+    const existing = await Review.countDocuments({ experience: experienceId });
+    if (existing > 0) continue;
+
+    await Review.insertMany(
+      reviews.map((r) => ({ ...r, experience: experienceId }))
+    );
+    count += reviews.length;
+  }
+
+  console.log(`Seeded ${count} reviews.`);
 }
 
 async function seedUser(config: typeof DEMO_USER | typeof ADMIN_USER) {
@@ -220,7 +347,8 @@ async function main() {
   const adminUser = await seedUser(ADMIN_USER);
   console.log(`Admin user ready: ${ADMIN_USER.email} / ${ADMIN_USER.password}`);
 
-  await seedExperiences(adminUser._id);
+  const experienceIdBySlug = await seedExperiences(adminUser._id);
+  await seedReviews(experienceIdBySlug);
 
   await mongoose.disconnect();
   console.log("Done.");
