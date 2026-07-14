@@ -9,7 +9,6 @@ A full-stack outdoor adventure & experience booking platform, built with Next.js
 - **Auth:** NextAuth.js — Credentials (bcrypt) + optional Google OAuth, JWT sessions
 - **Validation:** Zod + React Hook Form
 
-
 ## Project Structure
 
 ```
@@ -35,8 +34,8 @@ src/
 
 - [x] **Step 1 — Scaffold:** project setup, DB connection, auth config, design tokens, base UI components
 - [x] **Step 2 — Landing page:** navbar, hero, 8 sections, footer
-- [ ] **Step 3 — Auth pages:** `/login`, `/register` with validation + demo login
-- [ ] **Step 4 — Explore page:** `/experiences` — search, filters, sorting, pagination, skeleton loaders
+- [x] **Step 3 — Auth pages:** `/login`, `/register` with validation + demo login
+- [x] **Step 4 — Explore page:** `/experiences` — search, filters, sorting, pagination, skeleton loaders
 - [ ] **Step 5 — Details page:** `/experiences/[slug]` — gallery, overview, specs, reviews, related items
 - [ ] **Step 6 — Add Item (protected):** `/items/add`
 - [ ] **Step 7 — Manage Items (protected):** `/items/manage`
@@ -46,4 +45,11 @@ src/
 
 ## Demo Credentials
 
-_To be added once auth + seed data are built (Step 3)._
+Run `npm run seed` after setting up `.env.local` to create these accounts:
+
+| Role  | Email                        | Password    |
+|-------|------------------------------|-------------|
+| User  | demo@wayfarer-travel.com     | Demo@1234   |
+| Admin | admin@wayfarer-travel.com    | Admin@1234  |
+
+The "Try Demo Account" button on `/login` auto-fills and signs in with the User account above.
