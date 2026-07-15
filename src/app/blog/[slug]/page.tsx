@@ -30,7 +30,7 @@ export default function BlogPostPage({ params }: PageProps) {
   return (
     <>
       <Navbar />
-      <main className="container max-w-3xl py-10">
+      <main id="main-content" className="container max-w-3xl py-10">
         <Link
           href="/blog"
           className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary"

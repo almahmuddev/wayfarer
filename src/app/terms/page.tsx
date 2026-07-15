@@ -50,7 +50,7 @@ export default function TermsPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <PageHeader title="Terms of Service" subtitle="Last updated: July 2026" />
 
         <section className="container max-w-3xl py-16">

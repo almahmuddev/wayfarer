@@ -18,7 +18,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <PageHeader
           title="Get in Touch"
           subtitle="Questions about a trip, a listing, or partnering with us? We read every message."

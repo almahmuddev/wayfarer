@@ -90,9 +90,17 @@ export function RegisterForm() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
         <div className="space-y-1.5">
           <Label htmlFor="name">Full name</Label>
-          <Input id="name" placeholder="Your name" {...register("name")} />
+          <Input
+            id="name"
+            placeholder="Your name"
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? "name-error" : undefined}
+            {...register("name")}
+          />
           {errors.name && (
-            <p className="text-xs text-destructive">{errors.name.message}</p>
+            <p id="name-error" className="text-xs text-destructive">
+              {errors.name.message}
+            </p>
           )}
         </div>
 
@@ -102,10 +110,14 @@ export function RegisterForm() {
             id="email"
             type="email"
             placeholder="you@example.com"
+            aria-invalid={!!errors.email}
+            aria-describedby={errors.email ? "email-error" : undefined}
             {...register("email")}
           />
           {errors.email && (
-            <p className="text-xs text-destructive">{errors.email.message}</p>
+            <p id="email-error" className="text-xs text-destructive">
+              {errors.email.message}
+            </p>
           )}
         </div>
 
@@ -115,10 +127,12 @@ export function RegisterForm() {
             id="password"
             type="password"
             placeholder="At least 8 characters"
+            aria-invalid={!!errors.password}
+            aria-describedby={errors.password ? "password-error" : undefined}
             {...register("password")}
           />
           {errors.password && (
-            <p className="text-xs text-destructive">
+            <p id="password-error" className="text-xs text-destructive">
               {errors.password.message}
             </p>
           )}
@@ -130,10 +144,14 @@ export function RegisterForm() {
             id="confirmPassword"
             type="password"
             placeholder="Re-enter your password"
+            aria-invalid={!!errors.confirmPassword}
+            aria-describedby={
+              errors.confirmPassword ? "confirmPassword-error" : undefined
+            }
             {...register("confirmPassword")}
           />
           {errors.confirmPassword && (
-            <p className="text-xs text-destructive">
+            <p id="confirmPassword-error" className="text-xs text-destructive">
               {errors.confirmPassword.message}
             </p>
           )}

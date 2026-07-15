@@ -79,6 +79,8 @@ export function Navbar() {
           className="inline-flex items-center justify-center rounded-md p-2 md:hidden"
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-nav-panel"
         >
           {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -86,7 +88,7 @@ export function Navbar() {
 
       {/* Mobile panel */}
       {isOpen && (
-        <div className="border-t border-border bg-background md:hidden">
+        <div id="mobile-nav-panel" className="border-t border-border bg-background md:hidden">
           <nav className="container flex flex-col gap-1 py-4">
             {navLinks.map((link) => (
               <Link

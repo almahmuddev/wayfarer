@@ -16,7 +16,7 @@ export default function BlogPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <PageHeader
           title="Stories from the Trail"
           subtitle="Trip reports and planning guides for the experiences you'll find on Wayfarer."

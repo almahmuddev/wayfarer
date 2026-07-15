@@ -41,7 +41,7 @@ export function BookingPanel({
   }
 
   return (
-    <Card className="sticky top-24">
+    <Card className="lg:sticky lg:top-24">
       <CardContent className="space-y-4 p-6">
         <div className="flex items-baseline justify-between">
           <span className="text-2xl font-bold text-foreground">

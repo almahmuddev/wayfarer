@@ -76,7 +76,7 @@ export default function HelpPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <PageHeader
           title="Help & FAQ"
           subtitle="Answers to the questions we hear most."

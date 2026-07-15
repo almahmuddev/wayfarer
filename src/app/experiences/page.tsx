@@ -11,7 +11,7 @@ export default function ExperiencesPage() {
   return (
     <>
       <Navbar />
-      <main className="container py-10 min-h-[60vh]">
+      <main id="main-content" className="container py-10 min-h-[60vh]">
         <Suspense fallback={null}>
           <ExperiencesExplorer />
         </Suspense>

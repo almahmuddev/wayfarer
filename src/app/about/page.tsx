@@ -36,7 +36,7 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <PageHeader
           title="About Wayfarer"
           subtitle="Built by travelers, run by locals."

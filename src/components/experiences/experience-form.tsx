@@ -101,10 +101,14 @@ export function ExperienceForm() {
             <Input
               id="title"
               placeholder="e.g. Sunset Kayaking on the Surma River"
+              aria-invalid={!!errors.title}
+              aria-describedby={errors.title ? "title-error" : undefined}
               {...register("title")}
             />
             {errors.title && (
-              <p className="text-xs text-destructive">{errors.title.message}</p>
+              <p id="title-error" className="text-xs text-destructive">
+                {errors.title.message}
+              </p>
             )}
           </div>
 
@@ -114,10 +118,14 @@ export function ExperienceForm() {
               id="shortDescription"
               rows={2}
               placeholder="One or two sentences shown on the listing card (max 200 characters)"
+              aria-invalid={!!errors.shortDescription}
+              aria-describedby={
+                errors.shortDescription ? "shortDescription-error" : undefined
+              }
               {...register("shortDescription")}
             />
             {errors.shortDescription && (
-              <p className="text-xs text-destructive">
+              <p id="shortDescription-error" className="text-xs text-destructive">
                 {errors.shortDescription.message}
               </p>
             )}
@@ -129,10 +137,14 @@ export function ExperienceForm() {
               id="fullDescription"
               rows={6}
               placeholder="Describe the full experience: what travelers will do, see, and feel."
+              aria-invalid={!!errors.fullDescription}
+              aria-describedby={
+                errors.fullDescription ? "fullDescription-error" : undefined
+              }
               {...register("fullDescription")}
             />
             {errors.fullDescription && (
-              <p className="text-xs text-destructive">
+              <p id="fullDescription-error" className="text-xs text-destructive">
                 {errors.fullDescription.message}
               </p>
             )}
@@ -141,7 +153,13 @@ export function ExperienceForm() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="space-y-1.5">
               <Label htmlFor="category">Category</Label>
-              <select id="category" className={selectClass} {...register("category")}>
+              <select
+                id="category"
+                className={selectClass}
+                aria-invalid={!!errors.category}
+                aria-describedby={errors.category ? "category-error" : undefined}
+                {...register("category")}
+              >
                 <option value="">Select a category</option>
                 {categoryOptions.map((c) => (
                   <option key={c} value={c}>
@@ -150,13 +168,21 @@ export function ExperienceForm() {
                 ))}
               </select>
               {errors.category && (
-                <p className="text-xs text-destructive">{errors.category.message}</p>
+                <p id="category-error" className="text-xs text-destructive">
+                  {errors.category.message}
+                </p>
               )}
             </div>
 
             <div className="space-y-1.5">
               <Label htmlFor="difficulty">Difficulty</Label>
-              <select id="difficulty" className={selectClass} {...register("difficulty")}>
+              <select
+                id="difficulty"
+                className={selectClass}
+                aria-invalid={!!errors.difficulty}
+                aria-describedby={errors.difficulty ? "difficulty-error" : undefined}
+                {...register("difficulty")}
+              >
                 <option value="">Select difficulty</option>
                 {difficultyOptions.map((d) => (
                   <option key={d} value={d}>
@@ -165,7 +191,7 @@ export function ExperienceForm() {
                 ))}
               </select>
               {errors.difficulty && (
-                <p className="text-xs text-destructive">
+                <p id="difficulty-error" className="text-xs text-destructive">
                   {errors.difficulty.message}
                 </p>
               )}
@@ -176,10 +202,14 @@ export function ExperienceForm() {
               <Input
                 id="location"
                 placeholder="e.g. Sylhet, Bangladesh"
+                aria-invalid={!!errors.location}
+                aria-describedby={errors.location ? "location-error" : undefined}
                 {...register("location")}
               />
               {errors.location && (
-                <p className="text-xs text-destructive">{errors.location.message}</p>
+                <p id="location-error" className="text-xs text-destructive">
+                  {errors.location.message}
+                </p>
               )}
             </div>
 
@@ -188,10 +218,14 @@ export function ExperienceForm() {
               <Input
                 id="durationLabel"
                 placeholder="e.g. Half day, 2 days"
+                aria-invalid={!!errors.durationLabel}
+                aria-describedby={
+                  errors.durationLabel ? "durationLabel-error" : undefined
+                }
                 {...register("durationLabel")}
               />
               {errors.durationLabel && (
-                <p className="text-xs text-destructive">
+                <p id="durationLabel-error" className="text-xs text-destructive">
                   {errors.durationLabel.message}
                 </p>
               )}
@@ -205,10 +239,14 @@ export function ExperienceForm() {
                 min={0}
                 step="0.01"
                 placeholder="45"
+                aria-invalid={!!errors.price}
+                aria-describedby={errors.price ? "price-error" : undefined}
                 {...register("price")}
               />
               {errors.price && (
-                <p className="text-xs text-destructive">{errors.price.message}</p>
+                <p id="price-error" className="text-xs text-destructive">
+                  {errors.price.message}
+                </p>
               )}
             </div>
 
@@ -219,10 +257,14 @@ export function ExperienceForm() {
                 type="number"
                 min={1}
                 placeholder="8"
+                aria-invalid={!!errors.maxGroupSize}
+                aria-describedby={
+                  errors.maxGroupSize ? "maxGroupSize-error" : undefined
+                }
                 {...register("maxGroupSize")}
               />
               {errors.maxGroupSize && (
-                <p className="text-xs text-destructive">
+                <p id="maxGroupSize-error" className="text-xs text-destructive">
                   {errors.maxGroupSize.message}
                 </p>
               )}
@@ -230,9 +272,17 @@ export function ExperienceForm() {
 
             <div className="space-y-1.5 sm:col-span-2">
               <Label htmlFor="startDate">Start date</Label>
-              <Input id="startDate" type="date" {...register("startDate")} />
+              <Input
+                id="startDate"
+                type="date"
+                aria-invalid={!!errors.startDate}
+                aria-describedby={errors.startDate ? "startDate-error" : undefined}
+                {...register("startDate")}
+              />
               {errors.startDate && (
-                <p className="text-xs text-destructive">{errors.startDate.message}</p>
+                <p id="startDate-error" className="text-xs text-destructive">
+                  {errors.startDate.message}
+                </p>
               )}
             </div>
           </div>
@@ -242,10 +292,14 @@ export function ExperienceForm() {
             <Input
               id="imageUrl"
               placeholder="https://..."
+              aria-invalid={!!errors.imageUrl}
+              aria-describedby={errors.imageUrl ? "imageUrl-error" : undefined}
               {...register("imageUrl")}
             />
             {errors.imageUrl && (
-              <p className="text-xs text-destructive">{errors.imageUrl.message}</p>
+              <p id="imageUrl-error" className="text-xs text-destructive">
+                {errors.imageUrl.message}
+              </p>
             )}
             <p className="text-xs text-muted-foreground">
               Leave blank to use a placeholder photo for now.
@@ -260,10 +314,14 @@ export function ExperienceForm() {
               id="additionalImages"
               rows={3}
               placeholder={"https://...\nhttps://..."}
+              aria-invalid={!!errors.additionalImages}
+              aria-describedby={
+                errors.additionalImages ? "additionalImages-error" : undefined
+              }
               {...register("additionalImages")}
             />
             {errors.additionalImages && (
-              <p className="text-xs text-destructive">
+              <p id="additionalImages-error" className="text-xs text-destructive">
                 {errors.additionalImages.message}
               </p>
             )}

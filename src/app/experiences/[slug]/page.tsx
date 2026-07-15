@@ -110,7 +110,7 @@ export default async function ExperienceDetailsPage({ params }: PageProps) {
   return (
     <>
       <Navbar />
-      <main className="container py-10">
+      <main id="main-content" className="container py-10">
         <ImageGallery images={experience.images} title={experience.title} />
 
         <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-3">

@@ -46,7 +46,7 @@ export default function PrivacyPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <PageHeader title="Privacy Policy" subtitle="Last updated: July 2026" />
 
         <section className="container max-w-3xl py-16">

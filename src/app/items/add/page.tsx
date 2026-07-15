@@ -21,7 +21,7 @@ export default async function AddExperiencePage() {
   return (
     <>
       <Navbar />
-      <main className="container max-w-3xl py-10">
+      <main id="main-content" className="container max-w-3xl py-10">
         <h1 className="text-3xl font-bold tracking-tight text-foreground">
           Add a New Experience
         </h1>

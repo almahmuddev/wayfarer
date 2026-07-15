@@ -80,9 +80,17 @@ export function ContactForm() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="space-y-1.5">
           <Label htmlFor="name">Name</Label>
-          <Input id="name" placeholder="Your name" {...register("name")} />
+          <Input
+            id="name"
+            placeholder="Your name"
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? "name-error" : undefined}
+            {...register("name")}
+          />
           {errors.name && (
-            <p className="text-xs text-destructive">{errors.name.message}</p>
+            <p id="name-error" className="text-xs text-destructive">
+              {errors.name.message}
+            </p>
           )}
         </div>
         <div className="space-y-1.5">
@@ -91,10 +99,14 @@ export function ContactForm() {
             id="email"
             type="email"
             placeholder="you@example.com"
+            aria-invalid={!!errors.email}
+            aria-describedby={errors.email ? "email-error" : undefined}
             {...register("email")}
           />
           {errors.email && (
-            <p className="text-xs text-destructive">{errors.email.message}</p>
+            <p id="email-error" className="text-xs text-destructive">
+              {errors.email.message}
+            </p>
           )}
         </div>
       </div>
@@ -104,10 +116,14 @@ export function ContactForm() {
         <Input
           id="subject"
           placeholder="What's this about?"
+          aria-invalid={!!errors.subject}
+          aria-describedby={errors.subject ? "subject-error" : undefined}
           {...register("subject")}
         />
         {errors.subject && (
-          <p className="text-xs text-destructive">{errors.subject.message}</p>
+          <p id="subject-error" className="text-xs text-destructive">
+            {errors.subject.message}
+          </p>
         )}
       </div>
 
@@ -117,10 +133,14 @@ export function ContactForm() {
           id="message"
           rows={5}
           placeholder="Tell us a bit more..."
+          aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? "message-error" : undefined}
           {...register("message")}
         />
         {errors.message && (
-          <p className="text-xs text-destructive">{errors.message.message}</p>
+          <p id="message-error" className="text-xs text-destructive">
+            {errors.message.message}
+          </p>
         )}
       </div>
 
