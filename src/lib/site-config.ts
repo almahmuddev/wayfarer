@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Wayfarer connects travelers with guided hiking, camping, water, cultural, wildlife, and photography experiences led by verified local hosts.",
   supportEmail: "hello@wayfarer-travel.com",
-  supportPhone: "+880 1XXX-XXXXXX",
+  supportPhone: "+880 1874-991984",
 };
 
 // Visible to everyone
@@ -60,12 +60,11 @@ export const categories = [
   },
 ] as const;
 
-// TODO: replace with real social profiles before final submission
 export const socialLinks = [
-  { label: "Instagram", href: "#", icon: "Instagram" },
-  { label: "Facebook", href: "#", icon: "Facebook" },
-  { label: "X", href: "#", icon: "Twitter" },
-  { label: "LinkedIn", href: "#", icon: "Linkedin" },
+  { label: "Instagram", href: "https://www.instagram.com/almahmuddev/", icon: "Instagram" },
+  { label: "Facebook", href: " https://www.facebook.com/share/1AKXLBv3Gv/", icon: "Facebook" },
+  { label: "X", href: "https://x.com/almahmuddev", icon: "Twitter" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/almahmuddev/", icon: "Linkedin" },
 ];
 
 export const footerLinkGroups = [
