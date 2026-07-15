@@ -85,7 +85,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
             reserved.
           </p>
-          <p>Built with Next.js &amp; TypeScript.</p>
+          <p>Built with Next.js &amp; TypeScript by Mahmud Khan</p>
         </div>
       </div>
     </footer>
