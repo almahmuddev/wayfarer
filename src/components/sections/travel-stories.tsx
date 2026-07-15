@@ -2,33 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-
-const stories = [
-  {
-    slug: "hidden-trails-sylhet-hills",
-    title: "5 Hidden Trails in the Sylhet Hills You Haven't Explored",
-    excerpt:
-      "Past the tea gardens tourists usually stop at, these five routes climb into rarely-visited ridge lines.",
-    image: "https://picsum.photos/seed/sylhet-hills-blog/600/400",
-    readTime: "6 min read",
-  },
-  {
-    slug: "beginners-guide-kayaking-sundarbans",
-    title: "A Beginner's Guide to Kayaking the Sundarbans",
-    excerpt:
-      "What to expect on your first paddle through the mangroves, from tide timing to what wildlife you'll actually see.",
-    image: "https://picsum.photos/seed/sundarbans-blog/600/400",
-    readTime: "8 min read",
-  },
-  {
-    slug: "packing-list-first-overnight-camping-trip",
-    title: "Packing List for Your First Overnight Camping Trip",
-    excerpt:
-      "The gear that matters, the gear that doesn't, and what most first-timers bring way too much of.",
-    image: "https://picsum.photos/seed/camping-blog/600/400",
-    readTime: "5 min read",
-  },
-];
+import { blogPosts } from "@/lib/data/blog";
 
 export function TravelStories() {
   return (
@@ -52,7 +26,7 @@ export function TravelStories() {
       </div>
 
       <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-        {stories.map((story) => (
+        {blogPosts.slice(0, 3).map((story) => (
           <Link key={story.slug} href={`/blog/${story.slug}`}>
             <Card className="h-full overflow-hidden transition-shadow hover:shadow-md">
               <div className="relative aspect-[3/2] w-full">

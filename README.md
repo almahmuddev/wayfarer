@@ -39,9 +39,9 @@ src/
 - [x] **Step 5 — Details page:** `/experiences/[slug]` — gallery, overview, specs, reviews, related items
 - [x] **Step 6 — Add Item (protected):** `/items/add`
 - [x] **Step 7 — Manage Items (protected):** `/items/manage`
-- [ ] **Step 8 — Additional pages:** About, Contact, and 1–2 more
-- [ ] **Step 9 — Polish pass:** responsiveness, accessibility, empty/error states
-- [ ] **Step 10 — Deployment:** Vercel + MongoDB Atlas, seed demo/admin accounts
+- [x] **Step 8 — Additional pages:** About, Contact, and 1–2 more
+- [x] **Step 9 — Polish pass:** responsiveness, accessibility, empty/error states
+- [x] **Step 10 — Deployment:** Vercel + MongoDB Atlas, seed demo/admin accounts
 
 ## Demo Credentials
 
