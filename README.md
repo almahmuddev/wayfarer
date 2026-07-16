@@ -50,6 +50,6 @@ Run `npm run seed` after setting up `.env.local` to create these accounts:
 | Role  | Email                        | Password    |
 |-------|------------------------------|-------------|
 | User  | demo@wayfarer-travel.com     | Demo@1234   |
-| Admin | admin@wayfarer-travel.com    | Admin@1234  |
+| Admin | admin@wayfarer-travel.com    | wayfarer_Admin1  |
 
 The "Try Demo Account" button on `/login` auto-fills and signs in with the User account above.
