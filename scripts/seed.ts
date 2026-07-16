@@ -28,7 +28,7 @@ const DEMO_USER = {
 const ADMIN_USER = {
   name: "Wayfarer Admin",
   email: "admin@wayfarer-travel.com",
-  password: "Admin@1234",
+  password: "wayfarer_Admin1",
   role: "admin" as const,
 };
 
